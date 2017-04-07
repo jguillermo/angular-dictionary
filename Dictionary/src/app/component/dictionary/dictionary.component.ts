@@ -13,10 +13,10 @@ export class DictionaryComponent implements OnInit {
 
 
   constructor(public _fds: FireDictionaryService) {
-    this._fds.getList('hola')
-      .subscribe(() => {
-        console.log("Mensajes cargados...");
-      });
+    // this._fds.getList('hola')
+    //   .subscribe(() => {
+    //     console.log("Mensajes cargados...");
+    //   });
   }
 
   ngOnInit() {
@@ -24,7 +24,8 @@ export class DictionaryComponent implements OnInit {
 
   sendform(forma: NgForm) {
     console.log('formulario enviado');
-    console.log(forma.value);
+    console.log(forma.value.q);
+    this._fds.filterBy(forma.value.q);
   }
 
 }
